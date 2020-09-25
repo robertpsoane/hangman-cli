@@ -20,10 +20,18 @@ class Executioner:
         self.repeat = False
         
     def loadWords(self):
-        wordbank_location = 'resources/wordbank.txt'
-        words_obj = pd.read_csv(wordbank_location).T.index
-        words = [word for word in words_obj]
-        self.words = words
+        choice = input('Please choose a difficulty. Easy or Hard: [E]/h\n')
+        if choice == 'h':
+            wordbank_location = 'resources/JSON/hard_words.json'
+        elif choice == 'debug':
+            wordbank_location = 'resources/JSON/debug_words.json'
+        else:
+            wordbank_location = 'resources/JSON/easy_words.json'
+        
+        with open(wordbank_location) as json_file:
+            data = json.load(json_file)
+        self.json = data
+        self.words = data['words']
 
     def chooseWord(self):
         number_of_words = len(self.words)
@@ -118,6 +126,6 @@ class Executioner:
 
             if self.victim.alive == False:
                 self.renderScreen()
-                print('Too many guesses.  Your victim has died...')
+                print('Too many guesses.  Your victim has died...  The correct word was {}'.format(self.chosen_word))
                 complete = True
             
