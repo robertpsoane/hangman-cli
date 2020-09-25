@@ -3,8 +3,8 @@ import pandas as pd
 from numpy import random
 import json
 
-from resources.Executioner import Executioner as Executioner
-from resources.Victim import Victim as Victim
+from resources.Classes.Executioner import Executioner as Executioner
+from resources.Classes.Victim import Victim as Victim
 
 # Game View Class
 class GameView:
@@ -15,7 +15,7 @@ class GameView:
         self.play = True
 
     def loadJson(self):
-        with open('resources/game_settings.json') as json_file:
+        with open('resources/JSON/game_settings.json') as json_file:
             data = json.load(json_file)
         self.json = data
 

@@ -15,7 +15,7 @@ class Victim:
         self.alive = True
 
     def loadVictimJson(self):
-        with open('resources/victim_settings.json') as json_file:
+        with open('resources/JSON/victim_settings.json') as json_file:
             data = json.load(json_file)
         self.json = data
 

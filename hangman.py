@@ -4,7 +4,7 @@ import pandas as pd
 from numpy import random
 import json
 
-from resources.GameView import GameView as GameView
+from resources.Classes.GameView import GameView as GameView
 
 # initiating GameView
 game = GameView()

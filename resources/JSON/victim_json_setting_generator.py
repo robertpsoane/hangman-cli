@@ -171,5 +171,7 @@ x = {
 
 }
 
-print(json.dumps(x))
+output_json = json.dumps(x)
+
+new_json = open("victim_settings.json","w").write(output_json).close()
 
