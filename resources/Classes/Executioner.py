@@ -18,6 +18,7 @@ class Executioner:
         self.correct_guesses = []
         self.proportion_correct = 0
         self.repeat = False
+        self.alphabet = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m',]
         
     def loadWords(self):
         choice = input('Please choose a difficulty. Easy or Hard: [E]/h\n')
@@ -78,10 +79,14 @@ class Executioner:
         print(output_string)
         
     def getGuess(self):
-        if self.repeat == False:
-            guess = input('Please make a guess:\n')
-        else:
-            guess = input('Previous guess was a repeat.  Please make a guess:\n')
+        guess_letter = False
+        while guess_letter is False:
+            if self.repeat == False:
+                guess = input('Please make a guess:\n')
+            else:
+                guess = input('Previous guess was a repeat.  Please make a guess:\n')
+            if guess in self.alphabet:
+                guess_letter = True
 
         self.checkRepeat(guess)
         if self.repeat == False:
